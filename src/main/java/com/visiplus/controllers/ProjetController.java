@@ -64,5 +64,16 @@ public class ProjetController {
 			
 		projetService.delete(id);
 	}
+	
+	@DeleteMapping("/projet/name/{name}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public void deleteByName(@PathVariable String name) {
+	    // Check if the project exists by name
+	    projetService.findByName(name);
+	    
+	    // Delete the project by name
+	    projetService.deleteByName(name);
+	}
+
 
 }

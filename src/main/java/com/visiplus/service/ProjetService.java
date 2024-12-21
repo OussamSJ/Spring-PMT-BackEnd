@@ -14,4 +14,10 @@ public interface ProjetService {
 
 	public void delete(int id);
 
+	public void deleteByName(String name);
+
+	public Projet findByName(String name);
+
+
+
 }

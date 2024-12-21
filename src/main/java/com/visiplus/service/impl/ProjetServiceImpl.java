@@ -12,9 +12,11 @@ import com.visiplus.exceptions.EntityDontExistException;
 import com.visiplus.models.Projet;
 import com.visiplus.service.ProjetService;
 
+import jakarta.persistence.EntityNotFoundException;
+
 
 @Service
-public class ProjetServiceImpl implements ProjetService {
+public  class ProjetServiceImpl implements ProjetService {
 	
 	
 	@Autowired
@@ -52,5 +54,21 @@ public class ProjetServiceImpl implements ProjetService {
 		projetRepository.deleteById(id);
 		
 	}
+
+	@Override
+	public Projet findByName(String name) {
+		   return projetRepository.findByName(name)
+	                .orElseThrow(() -> new EntityNotFoundException("Project not found with name: " + name));
+		
+	}
+
+	@Override
+	public void deleteByName(String name) {
+		  Projet project = findByName(name); // Ensure the project exists
+	        projetRepository.delete(project);
+		
+	}
+
+
 
 }
