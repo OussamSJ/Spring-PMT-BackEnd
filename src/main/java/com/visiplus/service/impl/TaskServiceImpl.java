@@ -23,6 +23,9 @@ public class TaskServiceImpl implements TaskService{
 	
 	@Autowired
 	private TaskRepository taskRepository;
+	
+	
+	
 
 	@Override
 	public int create(int id_projet, Task task) {
@@ -50,9 +53,9 @@ public class TaskServiceImpl implements TaskService{
 	}
 
 	@Override
-	public Set<Task> findAllByProjet(int id_projet) {
-	
-		return projetService.findById(id_projet).getTasks();
+	public Set<Task> findAllByProjet(String nom_projet) {
+		 
+		return projetService.findByName(nom_projet).getTasks();
 	}
 
 	@Override
@@ -75,5 +78,24 @@ public class TaskServiceImpl implements TaskService{
 		taskRepository.delete(task);
 		
 	}
+
+	@Override
+	public void updatePartial(Task taskExistant, Task newTask) {
+		
+			
+			//  Mettre à jour les champs modifiables
+			if(newTask.getStatus() != null) {	
+				taskExistant.setStatus(newTask.getStatus());
+			}
+			
+			
+			
+			
+			//Mettre à jour la tache existant dans la base
+			taskRepository.save(taskExistant);
+			
+		}
+		
+	
 
 }

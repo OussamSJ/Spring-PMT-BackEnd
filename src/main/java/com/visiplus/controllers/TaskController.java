@@ -4,17 +4,22 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+
 import com.visiplus.models.Task;
 import com.visiplus.service.TaskService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200") 
 public class TaskController {
 	
 	
@@ -23,11 +28,11 @@ public class TaskController {
 	
 	
 	
-	@GetMapping("/projet/{id_projet}/tasks")
+	@GetMapping("/projet/{nom_projet}/tasks")
 	@ResponseStatus(code = HttpStatus.OK)
-	public Set<Task> findAllByEntreprise(@PathVariable("id_projet") int id_projet){
+	public Set<Task> findAllByEntreprise(@PathVariable("nom_projet") String nom_projet){
 		
-		return taskService.findAllByProjet(id_projet);
+		return taskService.findAllByProjet(nom_projet);	
 		
 	}
 	
@@ -49,6 +54,15 @@ public class TaskController {
 		
 	}
 	
+	@PatchMapping("/task/{id_task}")
+	@ResponseStatus(code = HttpStatus.OK)
+    public void modifierPartiel(@PathVariable("id_task") int id_task, @RequestBody Task newTask) {
+    
+		Task taskExistant = taskService.findById(id_task);
+		
+		taskService.updatePartial(taskExistant, newTask);
+		
+	}
 	
 	@DeleteMapping("/task/{id_task}")
 	@ResponseStatus(code=HttpStatus.OK)
