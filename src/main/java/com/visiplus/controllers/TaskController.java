@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.iscod.ludotheque.models.Jeu;
 import com.visiplus.models.Task;
 import com.visiplus.service.TaskService;
 
@@ -46,11 +47,19 @@ public class TaskController {
 	
 	
 	
-	@PostMapping("/projet/{id_projet}/task")
-	@ResponseStatus(code = HttpStatus.CREATED)
-    public int cree(@PathVariable("id_projet") int id_projet, @RequestBody Task task) {
+//	@PostMapping("/projet/{id_projet}/task")
+//	@ResponseStatus(code = HttpStatus.CREATED)
+//    public int cree(@PathVariable("id_projet") int id_projet, @RequestBody Task task) {
+
+//		return taskService.create(id_projet,task);
 		
-		return taskService.create(id_projet,task);
+	//}
+	
+	@PostMapping("/projet/{nom_projet}/task")
+	@ResponseStatus(code = HttpStatus.CREATED)
+    public int cree(@PathVariable("nom_projet") String nom_projet, @RequestBody Task task) {
+		
+		return taskService.create(nom_projet,task);
 		
 	}
 	
@@ -63,6 +72,17 @@ public class TaskController {
 		taskService.updatePartial(taskExistant, newTask);
 		
 	}
+	
+	@PutMapping("/task/{id_task}")
+	@ResponseStatus(code = HttpStatus.OK)
+    public void modifier(@PathVariable("id_task") int id_task, @RequestBody Task task) {
+		
+		taskService.findById(id_task);
+		
+		taskService.update(id_task,task);
+		
+	}
+	
 	
 	@DeleteMapping("/task/{id_task}")
 	@ResponseStatus(code=HttpStatus.OK)

@@ -15,6 +15,10 @@ public interface TaskService {
 	void delete(Task task);
 
 	void updatePartial(Task taskExistant, Task newTask);
+
+	int create(String nom_projet, Task task);
+
+	void update(int id_task, Task task);
 	
 	
 

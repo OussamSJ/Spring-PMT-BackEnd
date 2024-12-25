@@ -95,6 +95,36 @@ public class TaskServiceImpl implements TaskService{
 			taskRepository.save(taskExistant);
 			
 		}
+
+	@Override
+	public int create(String nom_projet, Task task) {
+
+		//Récupération de l'entreprise
+		Projet projet = projetService.findByName(nom_projet);
+		
+		
+		
+		//Ajouter l'entreprise au jeu
+		task.setProjet(projet);
+		
+		
+		
+		//Mise à jour de la liste des jeux de l'entreprise
+		
+		projet.getTasks().add(task);
+		
+		
+		//Sauvegarde du jeu en base
+		return taskRepository.save(task).getId();
+	}
+
+	@Override
+	public void update(int id_task, Task task) {
+		task.setId(id_task);
+
+		taskRepository.save(task);
+		
+	}
 		
 	
 
