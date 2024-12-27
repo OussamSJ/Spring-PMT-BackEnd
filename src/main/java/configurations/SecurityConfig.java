@@ -12,7 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetails;
 
-@DisableWebSecurity
+
 @AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
