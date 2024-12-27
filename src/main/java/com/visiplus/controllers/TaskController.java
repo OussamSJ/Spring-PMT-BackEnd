@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iscod.ludotheque.models.Jeu;
+
 import com.visiplus.models.Task;
 import com.visiplus.service.TaskService;
 
@@ -73,6 +73,7 @@ public class TaskController {
 		
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("/task/{id_task}")
 	@ResponseStatus(code = HttpStatus.OK)
     public void modifier(@PathVariable("id_task") int id_task, @RequestBody Task task) {
