@@ -11,8 +11,7 @@ Back-end du **Project Management Tool (PMT)** développé avec Spring Boot. Ce p
 2. [Prérequis](#prérequis)
 3. [Installation et Configuration](#installation-et-configuration)
 4. [Endpoints API](#endpoints-api)
-5. [Contribution](#contribution)
-6. [Licence](#licence)
+
 
 ---
 
@@ -66,6 +65,7 @@ L'application sera disponible à http://localhost:8080.
 
 
 ## 4. Endpoints API
+
 Voici un résumé des principaux endpoints disponibles :
 
 ### Utilisateurs
