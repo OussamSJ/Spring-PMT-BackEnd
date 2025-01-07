@@ -2,7 +2,7 @@
 
 ![Java](https://img.shields.io/badge/Java-11-blue)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.5.4-green)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-12-blue)
+![MySQL](https://shields.io/badge/MySQL-lightgrey?logo=mysql&style=plastic&logoColor=white&labelColor=blue)
 
 Back-end du **Project Management Tool (PMT)** développé avec Spring Boot. Ce projet sert de base pour gérer les tâches, projets, utilisateurs et leurs interactions dans un contexte collaboratif.
 
@@ -63,20 +63,31 @@ mvn spring-boot:run
 L'application sera disponible à http://localhost:8080.
 
 ---
+
+
 ## 4. Endpoints API
 Voici un résumé des principaux endpoints disponibles :
 
-Utilisateurs
-GET /users : Listes des utilisateurs
-POST /user : Inscription d'un nouvel utilisateur
+### Utilisateurs
+#### GET /users : Listes des utilisateurs
+#### POST /user : Inscription d'un nouvel utilisateur
 
-Projets
-POST /api/projects : Création d'un projet
-GET /api/projects : Liste des projets
-PUT /api/projects/{id} : Mise à jour d'un projet
-Tâches
-POST /api/tasks : Création d'une tâche
-GET /api/tasks : Liste des tâches
-PUT /api/tasks/{id} : Mise à jour d'une tâche
-Notifications
-GET /api/notifications : Liste des notifications
+### Projets
+#### GET /projets : Liste des projets
+#### GET /projets/{id} : Trouver un projet par ID
+#### POST /projet : Création d'un projet
+#### DELETE /projet/{nom} : Suppression d'un projet par Nom
+
+### Tâches
+#### POST /projet/{id}/task : Création d'une tâche 
+#### GET /task/{id} : Liste des tâches par ID
+#### PUT /task/{id} : Mise à jour d'une tâche
+
+### Notifications
+#### GET /notifications : Liste des notifications
+
+```
+La Documentation Swagger sera disponible à http://localhost:8080/swagger-ui/index.html.
+```
+
+---
