@@ -21,7 +21,7 @@ Back-end du **Project Management Tool (PMT)** développé avec Spring Boot. Ce p
 - Création et gestion de projets
 - Attribution et suivi des tâches
 - Notifications et historique des modifications
-- Implémenté avec Spring Boot et PostgreSQL
+- Implémenté avec Spring Boot et MySQL
 
 ---
 
@@ -29,7 +29,7 @@ Back-end du **Project Management Tool (PMT)** développé avec Spring Boot. Ce p
 Assurez-vous d'avoir installé :
 - **Java 11** ou une version ultérieure
 - **Maven** pour la gestion des dépendances
-- **PostgreSQL** (ou MySQL si modifié dans l'application)
+- **MySQL** (pour stocker les données)
 - Un IDE comme IntelliJ IDEA ou Eclipse
 
 ---
