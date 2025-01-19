@@ -46,7 +46,7 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/[Spring Boot Back-End]:latest .
-        docker push ${{ secrets.DOCKER_USERNAME }}/[Spring Boot Back-End]:latest
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/[BackEnd]:latest .
+        docker push ${{ secrets.DOCKER_USERNAME }}/[BackEnd]:latest
 
     
