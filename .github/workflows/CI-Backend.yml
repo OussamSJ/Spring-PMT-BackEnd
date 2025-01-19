@@ -35,12 +35,4 @@ jobs:
    # - name: Run tests
      # run: mvn install
 
-    - name: Deploy JAR to Server
-      if: github.ref == 'refs/heads/main'
-      run: |
-        scp target/*.jar user@server:/path/to/deploy
-        ssh user@server 'bash /path/to/deploy/deploy-script.sh'
-      env:
-        DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER }}
-        DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-        DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+    
